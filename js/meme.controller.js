@@ -18,6 +18,7 @@ elHtml.addEventListener("click", (event) => {
     const isClickInside = elLineText.contains(event.target)
     // const keyPress = elHtml.addEvbvventListener('keyup')
     // console.log(event)
+    console.log(isClickInside, gIsFirstClick)
 
     if (!isClickInside && !gIsFirstClick) {
         console.log('Clicked outside the line-text element')
@@ -36,7 +37,7 @@ document.querySelector('.line-text').addEventListener('keyup', (event) => {
     //     toggleWritingMode(0, 0, false)
     //     document.querySelector('.line-text').blur()
     // }
-    setLineTxt(document.querySelector('.line-text').value,)
+    setLineTxt(document.querySelector('.line-text').value)
     console.log(document.querySelector('.line-text').value)
 })
 

@@ -39,7 +39,7 @@ function toggleWritingMode(memeIdx, lineIdx, isClicked) {
         gMemes[memeIdx].lines[lineIdx].isWritingMode = true
         // console.log(gMemes[memeIdx].lines[lineIdx].isWritingMode)
         if (!gIsFirstClick){ 
-            drawImg()
+            drawImg(getImgIdx())
         }
         createTextArea(0, 0, gMemes[memeIdx].lines[lineIdx].txt)
         if (gIsFirstClick) gIsFirstClick = false

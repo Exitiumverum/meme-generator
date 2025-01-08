@@ -1,8 +1,23 @@
-.main-nav:first-child{
-
+.main-nav li {
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
-.meme-editor{
-    display: grid;
-    grid-auto-flow: column;
+.meme-editor {
+    display: flex;
+}
+
+.main-header {
+    align-items: center;
+}
+
+.main-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.meme-modification-area{
+    display: flex;
+    
+
 }
