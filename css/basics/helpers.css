@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+
+.flex{
+    display: flex;
+}
+
+.flex.space-between{
+    justify-content: space-between;
+}
+
+.clear-list{
+    text-decoration: none;
+    list-style-type: none;
+}
