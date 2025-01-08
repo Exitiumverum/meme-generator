@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Meme generator - Dan Tayari</title>
+</head>
+
+<body onload="onInit()">
+    <!-- <header class="main-header flex space-between">
+        <div class="logo">Meme generator</div>
+        <ul class="main-nav flex space-between clear-list">
+            <li><a class="nav-link clear-list" href="#">Gallery</a></li>
+            <li><a class="nav-link clear-list" href="#">Memes</a></li>
+            <li><a class="nav-link clear-list" href="#">About</a></li>
+        </ul>
+    </header>
+
+    <div class="filter-bar flex space-between">
+        <input type="text" value="search">
+        <div class="filter-keywords">
+            <h4 class="keyword funny">funny</h4>
+            <h4 class="keyword crazy">crazy</h4>
+        </div>
+    </div>
+
+    <section class="imgs-gallery">
+        <img src="img/meme-imgs(square)/10.jpg" alt="">
+        <img src="img/meme-imgs(square)/9.jpg" alt="">
+        <img src="img/meme-imgs(square)/8.jpg" alt="">
+    </section> -->
+
+    <section class="meme-editor">
+        <div class="canvas-container">
+            <!-- <textarea class="canvas-textarea" style="position: absolute; top: 20%; left: 10%;  border: solid; resize: none; background: transparent; color: black; font-size: 20px;"></textarea> -->
+        <canvas onclick="handleCanvasClick()" width="400px" height="400px" class="meme-canvas"> 
+        </canvas>
+    </div>
+        <div class="meme-modification-area">
+            <input onkeyup="handleInputEvent(this)" onclick="handleInputEvent(this)" class="line-text" type="text" value="Add Text Here" onkeypress="handleInputEvent(this)">
+            <button>up</button>
+            <button>down</button>
+            <button>+</button>
+            <button>delete</button>
+            <button>A+</button>
+            <button>A-</button>
+            <button>L</button>
+            <button>C</button>
+            <button>R</button>
+            <input type="tel">
+            <button>S</button>
+            <button>Color</button>
+        </div>
+    </section>
+
+    <script src="js/imgs.service.js"></script>
+    <script src="js/meme.service.js"></script>
+    <script src="js/meme.controller.js"></script>
+    <!-- <script src="js/main.js"></script> -->
+</body>
+
+</html>
