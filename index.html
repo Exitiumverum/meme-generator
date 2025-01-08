@@ -9,7 +9,7 @@
 </head>
 
 <body onload="onInit()">
-    <!-- <header class="main-header flex space-between">
+    <header class="main-header flex space-between">
         <div class="logo">Meme generator</div>
         <ul class="main-nav flex space-between clear-list">
             <li><a class="nav-link clear-list" href="#">Gallery</a></li>
@@ -24,22 +24,20 @@
             <h4 class="keyword funny">funny</h4>
             <h4 class="keyword crazy">crazy</h4>
         </div>
-    </div>
+    </div> -->
 
-    <section class="imgs-gallery">
+    <section class="imgs-gallery"> 
         <img src="img/meme-imgs(square)/10.jpg" alt="">
         <img src="img/meme-imgs(square)/9.jpg" alt="">
         <img src="img/meme-imgs(square)/8.jpg" alt="">
-    </section> -->
+    </section>
 
     <section class="meme-editor">
         <div class="canvas-container">
-            <!-- <textarea class="canvas-textarea" style="position: absolute; top: 20%; left: 10%;  border: solid; resize: none; background: transparent; color: black; font-size: 20px;"></textarea> -->
         <canvas onclick="handleCanvasClick()" width="400px" height="400px" class="meme-canvas"> 
         </canvas>
     </div>
         <div class="meme-modification-area">
-            <!-- <input onkeyup="handleInputEvent(this)" class="line-text" type="text" value="Add Text Here" onkeypress="handleInputEvent(this)"> -->
             <input class="line-text" type="text" value="Add Text Here" >
             <button>up</button>
             <button>down</button>

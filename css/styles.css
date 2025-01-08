@@ -10,3 +10,6 @@
 
 /* Components */
 @import url(components/nav-link.css);
+/* @import url(components/canvas-container.css); */
+@import url(components/meme-editor.css);
+@import url(components/meme-modification-area.css);
