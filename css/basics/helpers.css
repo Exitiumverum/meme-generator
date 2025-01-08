@@ -14,4 +14,7 @@
     text-decoration: none;
     list-style-type: none;
 }
+.hidden{
+    display: none;
+}
 

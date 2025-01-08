@@ -5,6 +5,7 @@ const gCtx = gElCanvas.getContext('2d')
 let gIsWriting = false
 let gIsFirstClick = true
 
+const elHtml = document.documentElement
 
 function onInit() {
     getMeme()
@@ -14,27 +15,36 @@ function onInit() {
 }
 
 // check if the text area is clicked
-document.documentElement.addEventListener("click", (event) => {
+elHtml.addEventListener("click", (event) => {
     const elLineText = document.querySelector('.line-text')
     const isClickInside = elLineText.contains(event.target)
+    // const keyPress = elHtml.addEvbvventListener('keyup')
     // console.log(event)
-    
+
     if (!isClickInside && !gIsFirstClick) {
         console.log('Clicked outside the line-text element')
         toggleWritingMode(0, 0, false)
-    } else if(isClickInside) {
-        toggleWritingMode(0, 0, true)
+    } else if (isClickInside) {
+        if (!gIsWriting) {
+            toggleWritingMode(0, 0, true)
+            gIsWriting = true
+        }
         // console.log(event.type)
     }
 })
 
-document.querySelector('.line-text').addEventListener('keyup', () => [
+document.querySelector('.line-text').addEventListener('keyup', (event) => {
+    // if(event.key === 'Enter' && !gIsFirstClick) {
+    //     toggleWritingMode(0, 0, false)
+    //     document.querySelector('.line-text').blur()
+    // }
     setLineTxt(document.querySelector('.line-text').value,)
-])
+    console.log(document.querySelector('.line-text').value)
+})
 
 
-function renderMeme(lineText = 'Add Text Here') {
-    drawImg()
+function renderMeme(imgIdx, lineText = 'Add Text Here') {
+    drawImg(imgIdx)
     renderMemeLine(50, 40, getMemes()[0].lines[0].txt)
 }
 
@@ -46,9 +56,9 @@ function renderMemeLine(x, y, lineText) {
     gCtx.fillText(lineText, x, y)
 }
 
-function drawImg(memeIdx = 0) {
+function drawImg(imgIdx = 1) {
     const elImg = new Image()
-    elImg.src = `/img/meme-imgs(square)/${getMemes()[memeIdx].selectedImgId}.jpg`
+    elImg.src = `/img/meme-imgs(square)/${imgIdx}.jpg`
     elImg.onload = function () {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
     }
@@ -57,15 +67,15 @@ function drawImg(memeIdx = 0) {
 function handleInputEvent(elInput) {
     setLineTxt(elInput.value, 0, 0)
 
-    renderMemeLine(50, 40, elInput.value)
+    renderMemeLine(getMemes[0].lines[0].x, getMemes[0].lines[0].x, elInput.value)
 
     toggleWritingMode(0, 0)
 
-    console.log('hy')
-    console.log(elInput.value)
+    // console.log('hy')
+    // console.log(elInput.value)
 }
 
-function handleCanvasClick(){
+function handleCanvasClick() {
     document.querySelector('.meme-canvas')
 }
 
