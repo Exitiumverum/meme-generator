@@ -5,10 +5,10 @@ var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 let gMemes = []
 
 
-function getMeme() {
+function getMeme(imgIdx) {
     let meme = {
         selectedImgId: 5,
-        selectedImgIdx: 0,
+        selectedImgIdx: imgIdx,
         lines: [
             {
                 txt: 'Add Text Here',

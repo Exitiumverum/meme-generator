@@ -8,9 +8,7 @@ let gIsFirstClick = true
 const elHtml = document.documentElement
 
 function onInit() {
-    getMeme()
     console.log('Hello World')
-    renderMeme()
 
 }
 
