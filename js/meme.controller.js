@@ -21,9 +21,9 @@ elHtml.addEventListener("click", (event) => {
     const elTextArea = document.querySelector('.text-area')
     // const isClickInside = elLineText.contains(event.target)
     let isClickInside
-    if(elLineText.contains(event.target)) isClickInside = true
-    else if(!elTextArea) return
-    else if(elTextArea.contains(event.target)) isClickInside = true
+    if (elLineText.contains(event.target)) isClickInside = true
+    else if (!elTextArea) return
+    else if (elTextArea.contains(event.target)) isClickInside = true
     else isClickInside = false
 
     console.log(event.target)
@@ -42,7 +42,7 @@ elHtml.addEventListener("click", (event) => {
         // console.log(event.type)
     }
     if (event.key = 'delete') {
-        console.log(event,'delete was pressed')
+        console.log(event, 'delete was pressed')
         // drawImg(getImgIdx())
     }
 })
@@ -63,6 +63,20 @@ document.querySelector('.search-bar').addEventListener('blur', function () {
     this.value = 'Search'
 })
 
+document.querySelector('.color-picker').addEventListener('input', function (event) {
+    const selectedColor = event.target.value
+    gMemes[0].lines[0].color = selectedColor
+    console.log(gMemes[0].lines[0].color)
+    console.log('Selected color:', selectedColor)
+})
+
+document.querySelector('.font-increase').addEventListener('click', function (event, memeIdx = 0, lineIdx = 0) {
+    gMemes[0].lines[0].size += 1
+    drawImg(gCurrImg)
+    console.log(gMemes[0].lines[0].size)
+    renderMemeLine(gMemes[memeIdx].lines[lineIdx].x, gMemes[memeIdx].lines[lineIdx].y, gMemes[memeIdx].lines[lineIdx].txt)
+})
+
 
 function renderMeme(imgIdx, lineText = 'Add Text Here') {
     drawImg(imgIdx)
@@ -72,8 +86,8 @@ function renderMeme(imgIdx, lineText = 'Add Text Here') {
 function renderMemeLine(x, y, lineText) {
     gCtx.textBaseline = 'top'
     gCtx.textAlign = 'left'
-    gCtx.font = `${getMemes()[0].lines[0].size} ${getMemes()[0].lines[0].font}`
-    console.log(`${getMemes()[0].lines[0].size} ${getMemes()[0].lines[0].font}`)
+    gCtx.fillStyle = gMemes[0].lines[0].color
+    gCtx.font = `${gMemes[0].lines[0].size}px ${getMemes()[0].lines[0].font}`
     gCtx.fillText(lineText, x, y)
 }
 
@@ -100,7 +114,7 @@ function handleCanvasClick() {
     document.querySelector('.meme-canvas')
 }
 
-function downloadMeme(){
+function downloadMeme() {
     var dataUrl = gElCanvas.toDataURL("image/png")
     var a = document.createElement('a')
 
@@ -108,5 +122,6 @@ function downloadMeme(){
     a.download = 'meme.jpeg'
     a.click()
 }
+
 
 

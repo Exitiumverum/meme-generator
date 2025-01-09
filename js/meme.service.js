@@ -12,9 +12,9 @@ function getMeme(imgIdx) {
         lines: [
             {
                 txt: 'Add Text Here',
-                size: '20px',
+                size: 20,
                 font: 'serif',
-                color: 'red',
+                color: 'black',
                 x: 30, y:30,
                 isWritingMode: false
             }
@@ -61,8 +61,9 @@ function createTextArea(memeIdx = 0, lineIdx = 0, text, x= gMemes[memeIdx].lines
     textArea.style.left = `${getElementPosition(gElCanvas).x + x}px` 
     textArea.style.top = `${getElementPosition(gElCanvas).y + y}px`
     textArea.style.background = 'transparent'
-    textArea.style.fontSize = gMemes[0].lines[0].size
+    textArea.style.fontSize = `${gMemes[0].lines[0].size}px`
     textArea.style.font = gMemes[0].lines[0].font
+    textArea.style.color = gMemes[0].lines[0].color
     textArea.classList.add('text-area')
     textArea.draggable = true
     textArea.value = text 
