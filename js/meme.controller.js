@@ -12,6 +12,8 @@ const textarea = document.querySelector('.text-area')
 
 
 
+// let download = document.getElementById('downloadBtn')
+// download.addEventListener('click', downloadImage)
 
 // check if the text area is clicked
 elHtml.addEventListener("click", (event) => {
@@ -98,5 +100,13 @@ function handleCanvasClick() {
     document.querySelector('.meme-canvas')
 }
 
+function downloadMeme(){
+    var dataUrl = gElCanvas.toDataURL("image/png")
+    var a = document.createElement('a')
+
+    a.href = dataUrl
+    a.download = 'meme.jpeg'
+    a.click()
+}
 
 
