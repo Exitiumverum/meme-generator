@@ -13,7 +13,7 @@ function getMeme(imgIdx) {
             {
                 txt: 'Add Text Here',
                 size: '20px',
-                font: 'Ariel',
+                font: 'serif',
                 color: 'red',
                 x: 30, y:30,
                 isWritingMode: false
@@ -64,6 +64,7 @@ function createTextArea(memeIdx = 0, lineIdx = 0, text, x= gMemes[memeIdx].lines
     textArea.style.fontSize = gMemes[0].lines[0].size
     textArea.style.font = gMemes[0].lines[0].font
     textArea.classList.add('text-area')
+    textArea.draggable = true
     textArea.value = text 
     // console.log(text)
     document.body.appendChild(textArea)

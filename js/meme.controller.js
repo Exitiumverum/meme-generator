@@ -4,14 +4,25 @@ const gElCanvas = document.querySelector('.meme-canvas')
 const gCtx = gElCanvas.getContext('2d')
 let gIsWriting = false
 let gIsFirstClick = true
+let isDragging = false
+let offsetX, offsetY
 
 const elHtml = document.documentElement
+const textarea = document.querySelector('.text-area')
+
+
 
 
 // check if the text area is clicked
 elHtml.addEventListener("click", (event) => {
     const elLineText = document.querySelector('.line-text')
-    const isClickInside = elLineText.contains(event.target)
+    const elTextArea = document.querySelector('.text-area')
+    // const isClickInside = elLineText.contains(event.target)
+    let isClickInside
+    if(elLineText.contains(event.target)) isClickInside = true
+    else if(!elTextArea) return
+    else if(elTextArea.contains(event.target)) isClickInside = true
+    else isClickInside = false
 
     console.log(event.target)
     // const keyPress = elHtml.addEvbvventListener('keyup')
@@ -60,7 +71,7 @@ function renderMemeLine(x, y, lineText) {
     gCtx.textBaseline = 'top'
     gCtx.textAlign = 'left'
     gCtx.font = `${getMemes()[0].lines[0].size} ${getMemes()[0].lines[0].font}`
-    console.log(getMemes()[0].lines[0].size)
+    console.log(`${getMemes()[0].lines[0].size} ${getMemes()[0].lines[0].font}`)
     gCtx.fillText(lineText, x, y)
 }
 
