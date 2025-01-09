@@ -1,0 +1,15 @@
+html{
+    background-color: #404040;
+}
+body{
+    background-color: #6d6d6d;
+    border-radius: 30px;
+    outline: solid black;
+
+    padding: 1em;
+    margin-inline: max(10em);
+    align-items: center; /* Centers content vertically */
+    height: 100vh;
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Added box shadow */
+}

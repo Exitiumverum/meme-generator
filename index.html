@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Meme generator - Dan Tayari</title>
 </head>
 
 <body onload="onInit()">
     <header class="main-header flex space-between">
-        <div class="logo">Meme generator</div>
+        <div class="logo">
+            <h1>Meme generator</h1>
+        </div>
         <ul class="main-nav flex space-between clear-list">
             <li><a class="nav-link clear-list" href="#">Gallery</a></li>
             <li><a class="nav-link clear-list" href="#">Memes</a></li>
@@ -19,8 +22,11 @@
     </header>
 
     <div class="filter-bar flex space-between">
-        <input type="text" value="search">
-        <div class="filter-keywords">
+        <div class="search-container">
+            <input class="search-bar" type="text" value="Search">
+            <a class="fa search-icon">&#xf002</a>
+        </div>
+        <div class="filter-keywords flex">
             <h4 class="keyword funny">funny</h4>
             <h4 class="keyword crazy">crazy</h4>
         </div>
@@ -37,7 +43,7 @@
             <canvas onclick="handleCanvasClick()" width="400px" height="400px" class="meme-canvas">
             </canvas>
         </div>
-        
+
         <div class="meme-modification-area">
             <input class="line-text" type="text" value="Add Text Here">
             <button>up</button>

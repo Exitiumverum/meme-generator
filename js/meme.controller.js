@@ -41,6 +41,13 @@ document.querySelector('.line-text').addEventListener('keyup', (event) => {
     console.log(document.querySelector('.line-text').value)
 })
 
+document.querySelector('.search-bar').addEventListener('focus', function() {
+    this.value = ''
+})
+document.querySelector('.search-bar').addEventListener('blur', function() {
+    this.value = 'Search'
+})
+
 
 function renderMeme(imgIdx, lineText = 'Add Text Here') {
     drawImg(imgIdx)
