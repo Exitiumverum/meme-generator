@@ -44,20 +44,22 @@ function toggleWritingMode(memeIdx, lineIdx, isClicked) {
         createTextArea(0, 0, gMemes[memeIdx].lines[lineIdx].txt)
         if (gIsFirstClick) gIsFirstClick = false
     }
-    else {
+    else if(gIsWriting) {
         gMemes[memeIdx].lines[lineIdx].isWritingMode = false
         console.log(gMemes[memeIdx].lines[lineIdx].isWritingMode)
         renderMemeLine(gMemes[memeIdx].lines[lineIdx].x, gMemes[memeIdx].lines[lineIdx].y, gMemes[memeIdx].lines[lineIdx].txt)
+        console.log(gMemes[memeIdx].lines[lineIdx].x)
         destroyTextArea()
         gIsWriting = false
     }
+    else return
 }
 
-function createTextArea(memeIdx = 0, lineIdx = 0, text) {
+function createTextArea(memeIdx = 0, lineIdx = 0, text, x= gMemes[memeIdx].lines[lineIdx].x, y = gMemes[memeIdx].lines[lineIdx].y) {
     let textArea = document.createElement('textarea') 
     textArea.style.position = 'absolute' 
-    textArea.style.left = `${gMemes[memeIdx].lines[lineIdx].x}px` 
-    textArea.style.top = `${gMemes[memeIdx].lines[lineIdx].y}px`
+    textArea.style.left = `${getElementPosition(gElCanvas).x + x}px` 
+    textArea.style.top = `${getElementPosition(gElCanvas).y + y}px`
     textArea.style.background = 'transparent'
     textArea.style.fontSize = gMemes[0].lines[0].size
     textArea.style.font = gMemes[0].lines[0].font
@@ -69,4 +71,15 @@ function createTextArea(memeIdx = 0, lineIdx = 0, text) {
 
 function destroyTextArea() {
     document.querySelector('.text-area').remove()
+}
+
+function destroyLine(){
+    drawImg(getImgIdx)
+}
+
+function getElementPosition(element) {
+    const rect = element.getBoundingClientRect();
+    const x = rect.left + window.scrollX
+    const y = rect.top + window.scrollY
+    return { x, y }
 }

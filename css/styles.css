@@ -7,6 +7,7 @@
 @import url(setup/mq.css);
 @import url(setup/typography.css);
 @import url(setup/vars.css);
+@import url(setup/fa-regular-400.ttf);
 
 /* Components */
 @import url(components/nav-link.css);
@@ -19,3 +20,4 @@
 @import url(components/img.css);
 @import url(components/filter-bar.css);
 @import url(components/search-bar.css);
+@import url(components/tool-buttons.css);

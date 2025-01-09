@@ -7,18 +7,16 @@ let gIsFirstClick = true
 
 const elHtml = document.documentElement
 
-function onInit() {
-    console.log('Hello World')
-
-}
 
 // check if the text area is clicked
 elHtml.addEventListener("click", (event) => {
     const elLineText = document.querySelector('.line-text')
     const isClickInside = elLineText.contains(event.target)
+
+    console.log(event.target)
     // const keyPress = elHtml.addEvbvventListener('keyup')
     // console.log(event)
-    console.log(isClickInside, gIsFirstClick)
+    // console.log(isClickInside, gIsFirstClick)
 
     if (!isClickInside && !gIsFirstClick) {
         console.log('Clicked outside the line-text element')
@@ -29,6 +27,10 @@ elHtml.addEventListener("click", (event) => {
             gIsWriting = true
         }
         // console.log(event.type)
+    }
+    if (event.key = 'delete') {
+        console.log(event,'delete was pressed')
+        // drawImg(getImgIdx())
     }
 })
 
@@ -41,10 +43,10 @@ document.querySelector('.line-text').addEventListener('keyup', (event) => {
     console.log(document.querySelector('.line-text').value)
 })
 
-document.querySelector('.search-bar').addEventListener('focus', function() {
+document.querySelector('.search-bar').addEventListener('focus', function () {
     this.value = ''
 })
-document.querySelector('.search-bar').addEventListener('blur', function() {
+document.querySelector('.search-bar').addEventListener('blur', function () {
     this.value = 'Search'
 })
 
