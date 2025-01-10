@@ -20,12 +20,17 @@ elHtml.addEventListener("click", (event) => {
     const elLineText = document.querySelector('.line-text')
     const elTextArea = document.querySelector('.text-area')
     const elFontIncrease = document.querySelector('.font-increase')
+    const elFontDecrease = document.querySelector('.font-decrease')
     // const isClickInside = elLineText.contains(event.target)
     let IsClickOnLine
     let isClickOnFontIncrease
+    let isClickOnFontDecrease
 
     if (elFontIncrease.contains(event.target)) isClickOnFontIncrease = true
     else isClickOnFontIncrease = false
+
+    if (elFontDecrease.contains(event.target)) isClickOnFontDecrease = true
+    else isClickOnFontDecrease = false
 
     if (elLineText.contains(event.target)) IsClickOnLine = true
     else if (!elTextArea) return
@@ -37,7 +42,7 @@ elHtml.addEventListener("click", (event) => {
     // console.log(event)
     // console.log(isClickInside, gIsFirstClick)
 
-    if (!IsClickOnLine && !gIsFirstClick && !isClickOnFontIncrease) {
+    if (!IsClickOnLine && !gIsFirstClick && !isClickOnFontIncrease && !isClickOnFontDecrease) {
         console.log('Clicked outside the line-text element')
         toggleWritingMode(0, 0, false)
     } else if (IsClickOnLine) {
@@ -51,8 +56,12 @@ elHtml.addEventListener("click", (event) => {
         gMemes[getMemeIdx()].lines[getLineIdx()].size += 2
         drawImg(getImgIdx())
         createTextArea(0, 0, gMemes[getMemeIdx()].lines[getLineIdx()].txt)
-        console.log(gMemes[0].lines[0].size)
-        console.log('font++')
+    } else if (isClickOnFontDecrease) {
+        console.log('Hey Decreased')
+        destroyTextArea()
+        gMemes[getMemeIdx()].lines[getLineIdx()].size -= 2
+        drawImg(getImgIdx())
+        createTextArea(0, 0, gMemes[getMemeIdx()].lines[getLineIdx()].txt)
     }
     // if (event.key = 'delete') {
     //     console.log(event, 'delete was pressed')
