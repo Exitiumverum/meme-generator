@@ -19,32 +19,45 @@ const textarea = document.querySelector('.text-area')
 elHtml.addEventListener("click", (event) => {
     const elLineText = document.querySelector('.line-text')
     const elTextArea = document.querySelector('.text-area')
+    const elFontIncrease = document.querySelector('.font-increase')
     // const isClickInside = elLineText.contains(event.target)
-    let isClickInside
-    if (elLineText.contains(event.target)) isClickInside = true
+    let IsClickOnLine
+    let isClickOnFontIncrease
+
+    if (elFontIncrease.contains(event.target)) isClickOnFontIncrease = true
+    else isClickOnFontIncrease = false
+
+    if (elLineText.contains(event.target)) IsClickOnLine = true
     else if (!elTextArea) return
-    else if (elTextArea.contains(event.target)) isClickInside = true
-    else isClickInside = false
+    else if (elTextArea.contains(event.target)) IsClickOnLine = true
+    else IsClickOnLine = false
 
     console.log(event.target)
     // const keyPress = elHtml.addEvbvventListener('keyup')
     // console.log(event)
     // console.log(isClickInside, gIsFirstClick)
 
-    if (!isClickInside && !gIsFirstClick) {
+    if (!IsClickOnLine && !gIsFirstClick && !isClickOnFontIncrease) {
         console.log('Clicked outside the line-text element')
         toggleWritingMode(0, 0, false)
-    } else if (isClickInside) {
+    } else if (IsClickOnLine) {
         if (!gIsWriting) {
             toggleWritingMode(0, 0, true)
             gIsWriting = true
         }
         // console.log(event.type)
+    } else if (isClickOnFontIncrease) {
+        destroyTextArea()
+        gMemes[getMemeIdx()].lines[getLineIdx()].size += 2
+        drawImg(getImgIdx())
+        createTextArea(0, 0, gMemes[getMemeIdx()].lines[getLineIdx()].txt)
+        console.log(gMemes[0].lines[0].size)
+        console.log('font++')
     }
-    if (event.key = 'delete') {
-        console.log(event, 'delete was pressed')
-        // drawImg(getImgIdx())
-    }
+    // if (event.key = 'delete') {
+    //     console.log(event, 'delete was pressed')
+    //     drawImg(getImgIdx())
+    // }
 })
 
 document.querySelector('.line-text').addEventListener('keyup', (event) => {
@@ -53,7 +66,7 @@ document.querySelector('.line-text').addEventListener('keyup', (event) => {
     //     document.querySelector('.line-text').blur()
     // }
     setLineTxt(document.querySelector('.line-text').value)
-    console.log(document.querySelector('.line-text').value)
+    console.log('clicked', document.querySelector('.line-text').value)
 })
 
 document.querySelector('.search-bar').addEventListener('focus', function () {
@@ -70,12 +83,6 @@ document.querySelector('.color-picker').addEventListener('input', function (even
     console.log('Selected color:', selectedColor)
 })
 
-document.querySelector('.font-increase').addEventListener('click', function (event, memeIdx = 0, lineIdx = 0) {
-    gMemes[0].lines[0].size += 1
-    drawImg(gCurrImg)
-    console.log(gMemes[0].lines[0].size)
-    renderMemeLine(gMemes[memeIdx].lines[lineIdx].x, gMemes[memeIdx].lines[lineIdx].y, gMemes[memeIdx].lines[lineIdx].txt)
-})
 
 
 function renderMeme(imgIdx, lineText = 'Add Text Here') {
