@@ -6,6 +6,8 @@ let gIsWriting = false
 let gIsFirstClick = true
 let isDragging = false
 let offsetX, offsetY
+let gAddLineCount = 0
+
 
 const elHtml = document.documentElement
 const textarea = document.querySelector('.text-area')
@@ -21,10 +23,56 @@ elHtml.addEventListener("click", (event) => {
     const elTextArea = document.querySelector('.text-area')
     const elFontIncrease = document.querySelector('.font-increase')
     const elFontDecrease = document.querySelector('.font-decrease')
+    const elAddLine = document.querySelector('.add-line')
+    const elChangeLine = document.querySelector('.change-line')
     // const isClickInside = elLineText.contains(event.target)
     let IsClickOnLine
     let isClickOnFontIncrease
     let isClickOnFontDecrease
+    let isClickOnAddLine
+
+    if (elAddLine.contains(event.target)) {
+        console.log('clicked on add line')
+        isClickOnAddLine = true
+        // console.log(isClickOnAddLine)
+        console.log(gCurrLine)
+        if(gIsWriting) return
+        if (isNull(gCurrLine) || gMemes[gCurrMeme].lines.length < 2) {
+            if (isNull(gCurrLine)) {
+                console.log('first if', gCurrMeme)
+                getLine(gCurrMeme, 40, 40)
+                onCreateLine()
+            }
+            else if (gCurrLine === 0) {
+                console.log('second if')
+                getLine(gCurrMeme, 40, 400)
+                // gMemes[gCurrMeme].lines[gCurrLine].gIsWriting = true
+                // renderTextArea()
+                onCreateLine()
+                // renderMemeLine(gMemes[gCurrMeme].lines[0].x, gMemes[gCurrMeme].lines[0].y, gMemes[gCurrMeme].lines[0].txt)
+                // for(let i = 0; i < gMemes[gCurrMeme].lines.length; i++){
+                //     renderMemeLine(gMemes[gCurrMeme].lines[i].x, gMemes[gCurrMeme].lines[i].y, gMemes[gCurrMeme].lines[i].txt)
+                // }
+            } 
+        }
+        else console.log('max lines reached!')
+        gAddLineCount++
+        return 
+    }
+
+    if (elChangeLine.contains(event.target)) {
+        if (gCurrLine === 0) {
+            gCurrLine = 1
+            elLineText.value = gMemes[gCurrMeme].lines[gCurrLine].txt
+            console.log(gCurrLine)
+        } else if (gCurrLine === 1) {
+            gCurrLine = 0
+            elLineText.value = gMemes[gCurrMeme].lines[gCurrLine].txt
+            console.log(gCurrLine)
+        } else return
+    }
+
+    else isClickOnAddLine = false
 
     if (elFontIncrease.contains(event.target)) isClickOnFontIncrease = true
     else isClickOnFontIncrease = false
@@ -42,20 +90,24 @@ elHtml.addEventListener("click", (event) => {
     // console.log(event)
     // console.log(isClickInside, gIsFirstClick)
 
-    if (!IsClickOnLine && !gIsFirstClick && !isClickOnFontIncrease && !isClickOnFontDecrease) {
-        console.log('Clicked outside the line-text element')
-        toggleWritingMode(0, 0, false)
+
+
+    if (!IsClickOnLine && !gIsFirstClick && !isClickOnFontIncrease && !isClickOnFontDecrease && !isClickOnAddLine) {
+        console.log('Clicked outside the line-text element', gCurrLine)
+        toggleWritingMode(0, gCurrLine, false)
     } else if (IsClickOnLine) {
-        if (!gIsWriting) {
-            toggleWritingMode(0, 0, true)
-            gIsWriting = true
-        }
+        onEditLine()
+        // if (!gIsWriting) {
+        //     getLine(getMemeIdx())
+        //     toggleWritingMode(0, 0, true)
+        //     gIsWriting = true
+        // }
         // console.log(event.type)
     } else if (isClickOnFontIncrease) {
         destroyTextArea()
-        gMemes[getMemeIdx()].lines[getLineIdx()].size += 2
+        gMemes[gCurrMeme].lines[gCurrLine].size += 2
         drawImg(getImgIdx())
-        createTextArea(0, 0, gMemes[getMemeIdx()].lines[getLineIdx()].txt)
+        createTextArea(0, 0, gMemes[gCurrMeme].lines[gCurrLine].txt)
     } else if (isClickOnFontDecrease) {
         console.log('Hey Decreased')
         destroyTextArea()
@@ -74,7 +126,7 @@ document.querySelector('.line-text').addEventListener('keyup', (event) => {
     //     toggleWritingMode(0, 0, false)
     //     document.querySelector('.line-text').blur()
     // }
-    setLineTxt(document.querySelector('.line-text').value)
+    setLineTxt(document.querySelector('.line-text').value, gCurrMeme, gCurrLine)
     console.log('clicked', document.querySelector('.line-text').value)
 })
 
@@ -92,20 +144,40 @@ document.querySelector('.color-picker').addEventListener('input', function (even
     console.log('Selected color:', selectedColor)
 })
 
-
-
-function renderMeme(imgIdx, lineText = 'Add Text Here') {
-    drawImg(imgIdx)
-    renderMemeLine(50, 40, getMemes()[0].lines[0].txt)
+function onCreateLine() {
+    console.log(gIsWriting)
+        console.log(gCurrLine, gCurrMeme)
+    if (!gIsWriting) {
+        // getLine(gCurrMeme)
+        toggleWritingMode(gCurrMeme, gCurrLine, true)
+        gIsWriting = true
+    }
 }
 
-function renderMemeLine(x, y, lineText) {
+function onEditLine() {
+    if (!gIsWriting) {
+        toggleWritingMode(0, 0, true)
+        gIsWriting = true
+    }
+}
+
+function renderMeme(imgIdx,i, lineText = 'Add Text Here') {
+    drawImg(imgIdx)
+    if (getLineCount() > 0) {
+        
+            renderMemeLine(gMemes[gCurrMeme].lines[i].x, gMemes[gCurrMeme].lines[i].y, gMemes[gCurrMeme].lines[gCurrLine].txt)
+        
+    }
+}
+
+function renderMemeLine(x, y, lineText, lineIdx) {
     gCtx.textBaseline = 'top'
     gCtx.textAlign = 'left'
     gCtx.fillStyle = gMemes[0].lines[0].color
-    gCtx.font = `${gMemes[0].lines[0].size}px ${getMemes()[0].lines[0].font}`
+    gCtx.font = `${gMemes[gCurrMeme].lines[lineIdx].size}px ${gMemes[gCurrMeme].lines[lineIdx].font}`
     gCtx.fillText(lineText, x, y)
 }
+
 
 function drawImg(imgIdx = 1) {
     const elImg = new Image()
