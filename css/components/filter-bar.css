@@ -1,0 +1,26 @@
+.filter-bar{
+    align-items: center;
+    margin-block: 1em;
+}
+
+.keyword{
+    margin-inline: 1em;
+}
+.search-container {
+    position: relative;
+}
+
+.search-bar {
+    padding-right: 30px; 
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.search-icon:hover{
+    cursor: pointer;
+}

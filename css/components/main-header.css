@@ -1,0 +1,9 @@
+.main-header {
+    background-color: var(--main-bgc);
+    background-image: var(--main-bgc--gradient)
+
+    ;
+
+    border-radius: 30px;
+    z-index: 2h;
+}

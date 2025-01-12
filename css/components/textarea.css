@@ -1,0 +1,10 @@
+.text-area {
+    position: absolute;
+    outline: solid black;
+    cursor: move;
+    resize: none;
+}
+
+.text-area:hover {
+    cursor: move;
+}

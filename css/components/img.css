@@ -1,0 +1,10 @@
+.img {
+    width: 100%;
+    border-radius: 20px;
+    margin: 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.img:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="meme-editor">
+    <div class="canvas-container">
+        <canvas onclick="handleCanvasClick()" width="400px" height="400px" class="meme-canvas">
+        </canvas>
+    </div>
+    <div class="meme-modification-area flex">
+        <!-- <input onkeyup="handleInputEvent(this)" class="line-text" type="text" value="Add Text Here" onkeypress="handleInputEvent(this)"> -->
+        <input class="line-text" type="text" value="Add Text Here">
+        <button>up</button>
+        <button>down</button>
+        <button>+</button>
+        <button>delete</button>
+        <button>A+</button>
+        <button>A-</button>
+        <button>L</button>
+        <button>C</button>
+        <button>R</button>
+        <input type="tel">
+        <button>S</button>
+        <button>Color</button>
+    </div>
+    </section>
+
+
+    <script src="js/imgs.service.js"></script>
+    <script src="js/meme.service.js"></script>
+    <script src="js/meme.controller.js"></script>
+</body>
+
+</html>

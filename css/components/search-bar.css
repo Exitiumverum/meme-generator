@@ -1,0 +1,16 @@
+.search-bar{
+    background-color: #404040;
+    border-radius: 25px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for better spacing */
+    border: none; /* Remove default border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: all 0.3s ease; 
+
+    color: #6d6d6d;
+    font-size: 1.4em;
+}
+
+.search-bar:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow on focus */
+}

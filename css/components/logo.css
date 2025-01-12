@@ -1,0 +1,8 @@
+.logo{
+    margin-left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.logo:hover{
+    cursor: pointer;
+}
