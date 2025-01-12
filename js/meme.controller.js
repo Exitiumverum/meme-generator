@@ -25,11 +25,22 @@ elHtml.addEventListener("click", (event) => {
     const elFontDecrease = document.querySelector('.font-decrease')
     const elAddLine = document.querySelector('.add-line')
     const elChangeLine = document.querySelector('.change-line')
+    const elMenuOpener = document.querySelector('.menu-opener')
     // const isClickInside = elLineText.contains(event.target)
     let IsClickOnLine
     let isClickOnFontIncrease
     let isClickOnFontDecrease
     let isClickOnAddLine
+
+    if(document.querySelector('.main-nav').classList.contains('menu-clicked')){
+        console.log('clicked on close menu')
+        document.querySelector('.main-nav').classList.remove('menu-clicked')
+        return console.log('byrbr')
+    }
+
+    if(elMenuOpener.contains(event.target)){
+        document.querySelector('.main-nav').classList.add('menu-clicked')
+    }
 
     if (elAddLine.contains(event.target)) {
         console.log('clicked on add line')
@@ -93,6 +104,7 @@ elHtml.addEventListener("click", (event) => {
 
 
     if (!IsClickOnLine && !gIsFirstClick && !isClickOnFontIncrease && !isClickOnFontDecrease && !isClickOnAddLine) {
+
         console.log('Clicked outside the line-text element', gCurrLine)
         toggleWritingMode(0, gCurrLine, false)
     } else if (IsClickOnLine) {

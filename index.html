@@ -17,7 +17,9 @@
         <header class="main-header flex space-between">
             <div class="logo">
                 <h1>Meme generator</h1>
+                
             </div>
+            <img class="menu-opener" src="img/menu-svgrepo-com.svg" alt="">
             <ul class="main-nav flex space-between clear-list">
                 <li><a class="nav-link clear-list" href="#">Gallery</a></li>
                 <li><a class="nav-link clear-list" href="#">Memes</a></li>
@@ -30,16 +32,13 @@
                 <input class="search-bar" type="text" value="Search">
                 <a class="fa search-icon">&#xf002</a>
             </div>
-            <div class="filter-keywords flex">
+            <!-- <div class="filter-keywords flex">
                 <h4 class="keyword funny">funny</h4>
                 <h4 class="keyword crazy">crazy</h4>
-            </div>
+            </div> -->
         </div>
 
         <section class="main-gallery">
-            <img data-i="10" class="img" src="img/meme-imgs(square)/10.jpg" alt="">
-            <img data-i="9" class="img" src="img/meme-imgs(square)/9.jpg" alt="">
-            <img data-i="8" class="img" src="img/meme-imgs(square)/8.jpg" alt="">
         </section>
     </div>
 
@@ -65,11 +64,12 @@
                 <button class="button-editor stroke">S</button>
                 <input class="color-picker" type="color">
             </div>
+            <div class="share-area">
+                <button class="download-btn" onclick="downloadMeme()">Download</button>
+            </div>
         </div>
 
-        <div class="share-area">
-            <button class="download-btn" onclick="downloadMeme()">Download</button>
-        </div>
+        
     </section>
 
     <script src="js/meme.service.js"></script>

@@ -1,0 +1,62 @@
+/* Styles for devices with a max width of 480px (mobile phones) */
+@media screen and (max-width: 480px) {}
+
+@media screen and (max-width: 840px) {
+    .main-layout{
+        margin-inline: 0;
+    }
+    .menu-opener {
+        display: inline-block;
+    }
+    
+    .main-nav{
+        position: absolute;
+        flex-direction: column;
+        z-index: 1;
+        padding-top: 2em;
+        right: 0;
+        left: 0;
+        top: -203px;
+        padding: 2em;
+        background-color: var(--main-bgc);
+        background-image: var(--main-bgc--gradient);
+        transition: top 0.3s ease;
+    }
+
+    .main-nav::before{
+        pointer-events: none;
+        content: '';
+        position: fixed;
+        top: -300px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgb(0, 0, 0); 
+        opacity: 0;
+        z-index: -1;
+        transition: 0.3s ease;
+    }
+    
+    .main-nav.menu-clicked::before {
+        top: 187px;
+        opacity: 0.3;
+    }
+    .main-nav.menu-clicked {
+        top: -1rem;
+        z-index: 1;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Added box shadow */
+        
+    }
+    .main-nav li{
+        padding-block: 0.7em;
+    }
+    
+    
+}
+
+@media screen and (min-width: 841px) {
+    .menu-opener {
+        display: none;
+    }
+
+}
