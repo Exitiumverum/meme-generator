@@ -26,11 +26,16 @@ elHtml.addEventListener("click", (event) => {
     const elAddLine = document.querySelector('.add-line')
     const elChangeLine = document.querySelector('.change-line')
     const elMenuOpener = document.querySelector('.menu-opener')
+    const elGalleyButton = document.querySelector('.gallery-btn')
     // const isClickInside = elLineText.contains(event.target)
     let IsClickOnLine
     let isClickOnFontIncrease
     let isClickOnFontDecrease
     let isClickOnAddLine
+
+    if(elGalleyButton.contains(event.target)){
+        document.querySelector('.meme-editor').style.display = 'none'
+    }
 
     if(document.querySelector('.main-nav').classList.contains('menu-clicked')){
         console.log('clicked on close menu')
@@ -51,12 +56,12 @@ elHtml.addEventListener("click", (event) => {
         if (isNull(gCurrLine) || gMemes[gCurrMeme].lines.length < 2) {
             if (isNull(gCurrLine)) {
                 console.log('first if', gCurrMeme)
-                getLine(gCurrMeme, 40, 40)
+                getLine(gCurrMeme, 20, 20)
                 onCreateLine()
             }
             else if (gCurrLine === 0) {
                 console.log('second if')
-                getLine(gCurrMeme, 40, 400)
+                getLine(gCurrMeme, 20, 100)
                 // gMemes[gCurrMeme].lines[gCurrLine].gIsWriting = true
                 // renderTextArea()
                 onCreateLine()
