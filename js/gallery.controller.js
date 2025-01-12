@@ -29,7 +29,7 @@ function getImgIdx(){
 
 
 function renderSqImgs() {
-    const folderPath = 'https://Exitiumverum.github.io/img/meme-imgs(square)/'
+    const folderPath = 'img/meme-imgs(square)/'
     const imageCount = 10
 
     for (let i = 1; i <= imageCount; i++) {
